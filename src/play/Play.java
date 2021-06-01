@@ -188,13 +188,17 @@ public class Play {
                     continue;
                 }
 
+                newPlayArea.setStatus(newPlayAreaStatus); // 设置新出牌区的状态
+
+                // 展示刚刚出的牌------debug
+                System.out.println("您刚刚出的牌是：" + newPlayArea.getCards());
+
                 // 判断新出牌区是否可以替换旧出牌区
                 if (!CheckCard.isNewPlayCards(playArea, newPlayArea)) {
                     System.out.println("您出的牌比上家小，请重新选择更大的牌");
                     continue;
                 }
 
-                newPlayArea.setStatus(newPlayAreaStatus); // 设置新出牌区的状态
                 newPlayArea.setPid(player.getId()); // 设置新出牌区玩家编号
                 playArea = newPlayArea; // 新出牌区替换旧出牌区
                 player.removeCards(indexs); // 移除新出牌区所使用的牌

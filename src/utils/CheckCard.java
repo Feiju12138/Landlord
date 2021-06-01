@@ -79,7 +79,7 @@ public class CheckCard {
                 if (cardWeight1 == cardWeight2
                         && cardWeight2 == cardWeight3
                         && cardWeight3 == cardWeight4) {
-                    status = 4;
+                    status = 2;
                 }
 
                 // 判定三带一
@@ -555,7 +555,10 @@ public class CheckCard {
         }
 
         // 如果这一次出牌是炸弹，且上一次出牌不是双王
-        if (newPlayArea.getStatus()==2 && oldPlayArea.getStatus()!=1) {
+        if (newPlayArea.getStatus() == 2 && oldPlayArea.getStatus()!=1) {
+            if (oldPlayArea.getStatus() != 2) {
+                return true;
+            }
             if (newPlayArea.getCards().get(0).getWeights() > oldPlayArea.getCards().get(0).getWeights()) {
                 return true;
             }
