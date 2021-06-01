@@ -182,7 +182,7 @@ public class Play {
                 newPlayArea.setCards(cards); // 把拿出来的牌集合放入新出牌区
                 int newPlayAreaStatus = CheckCard.isPlayCards(newPlayArea); // 判断新出牌区是否合法
 
-                // 如果新出牌区合法
+                // 如果新出牌区不合法
                 if (newPlayAreaStatus == -1) {
                     System.out.println("您出的牌不符合出牌规定，请按照斗地主规则重新出牌");
                     continue;
