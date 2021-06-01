@@ -16,7 +16,7 @@ import java.util.Scanner;
 
 /**
  * name 斗地主游戏
- * version 0.1 beta
+ * version 0.2 beta
  */
 public class Play {
 
