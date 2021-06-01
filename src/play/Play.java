@@ -188,6 +188,7 @@ public class Play {
                     continue;
                 }
 
+                newPlayArea.setPid(player.getId()); // 设置新出牌区玩家编号
                 newPlayArea.setStatus(newPlayAreaStatus); // 设置新出牌区的状态
 
                 // 展示刚刚出的牌------debug
@@ -199,7 +200,6 @@ public class Play {
                     continue;
                 }
 
-                newPlayArea.setPid(player.getId()); // 设置新出牌区玩家编号
                 playArea = newPlayArea; // 新出牌区替换旧出牌区
                 player.removeCards(indexs); // 移除新出牌区所使用的牌
                 break;

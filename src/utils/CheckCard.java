@@ -540,22 +540,22 @@ public class CheckCard {
     public static boolean isNewPlayCards(PlayArea oldPlayArea, PlayArea newPlayArea) {
 
         // 如果上一次出牌者是-1，那么任何人都可以出任何组合的牌
-        if (oldPlayArea.getPid()==-1) {
+        if (oldPlayArea.getPid() == -1) {
             return true;
         }
 
         // 如果上一次出牌者和这一次出牌者相同，那么任何组合的牌都可以
-        if (oldPlayArea.getPid()==newPlayArea.getPid()) {
+        if (oldPlayArea.getPid() == newPlayArea.getPid()) {
             return true;
         }
 
         // 如果这一次出牌是火箭
-        if (newPlayArea.getStatus()==1) {
-           return true;
+        if (newPlayArea.getStatus() == 1) {
+            return true;
         }
 
         // 如果这一次出牌是炸弹，且上一次出牌不是双王
-        if (newPlayArea.getStatus() == 2 && oldPlayArea.getStatus()!=1) {
+        if (newPlayArea.getStatus() == 2 && oldPlayArea.getStatus() != 1) {
             if (oldPlayArea.getStatus() != 2) {
                 return true;
             }
@@ -569,9 +569,9 @@ public class CheckCard {
             return false;
         }
 
-        if (oldPlayArea.getStatus()==10 || oldPlayArea.getStatus()==11 || oldPlayArea.getStatus()==12) {
+        if (oldPlayArea.getStatus() == 10 || oldPlayArea.getStatus() == 11 || oldPlayArea.getStatus() == 12) {
             // 顺牌比较策略
-            if (newPlayArea.getCards().size()==oldPlayArea.getCards().size()) {
+            if (newPlayArea.getCards().size() == oldPlayArea.getCards().size()) {
                 if (newPlayArea.getCards().get(0).getWeights() > oldPlayArea.getCards().get(0).getWeights()) {
                     return true;
                 }
