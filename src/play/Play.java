@@ -84,6 +84,9 @@ public class Play {
         // 初始化一个空出牌区
         PlayArea playArea = new PlayArea();
         playArea.setStatus(0);
+        Player npc = new Player(-1);
+        npc.setId(-1);
+        playArea.setPlayer(npc);
 
         // 初始化玩家指针
         int pid = 0;
@@ -110,7 +113,7 @@ public class Play {
 
             System.out.println("----------------------------------");
             System.out.println("当前出牌区：");
-            System.out.println("上一次出牌玩家：" + playArea.getPid());
+            System.out.println("上一次出牌玩家：" + playArea.getPlayer().getId());
             System.out.println("类别：" + statusMapping.statusMappingMap.get(playArea.getStatus()));
             System.out.println("牌数组：" + playArea.getCards());
             System.out.println("----------------------------------");
@@ -188,7 +191,7 @@ public class Play {
                     continue;
                 }
 
-                newPlayArea.setPid(player.getId()); // 设置新出牌区玩家编号
+                newPlayArea.setPlayer(player); // 设置新出牌区玩家身份
                 newPlayArea.setStatus(newPlayAreaStatus); // 设置新出牌区的状态
 
                 // 展示刚刚出的牌------debug

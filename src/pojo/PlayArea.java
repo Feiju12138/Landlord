@@ -1,10 +1,6 @@
 package pojo;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
-import utils.Tools;
-
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -31,17 +27,21 @@ public class PlayArea {
      *  12：三顺-飞机-不带翅膀（aaabbb）
      *  13：飞机-带翅膀-单（aaabbbcd）
      *  14：飞机-带翅膀-对（aaabbbccdd）
-     * pid：上一次出牌的玩家编号
+     * pid：上一次出牌玩家的编号
      *  -1：没有上一次出牌的玩家
+     * player：上一次出牌的玩家信息
+     *
      */
     private List<Card> cards;
     private Integer status;
-    private Integer pid;
+//    private Integer pid;
+    private Player player;
 
     public PlayArea() {
         cards = new ArrayList<>();
         status = -1;
-        pid = -1;
+//        pid = -1;
+        player = null;
     }
 
     public List<Card> getCards() {
@@ -60,11 +60,11 @@ public class PlayArea {
         this.status = status;
     }
 
-    public Integer getPid() {
-        return pid;
+    public Player getPlayer() {
+        return player;
     }
 
-    public void setPid(Integer pid) {
-        this.pid = pid;
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 }

@@ -540,12 +540,12 @@ public class CheckCard {
     public static boolean isNewPlayCards(PlayArea oldPlayArea, PlayArea newPlayArea) {
 
         // 如果上一次出牌者是-1，那么任何人都可以出任何组合的牌
-        if (oldPlayArea.getPid() == -1) {
+        if (oldPlayArea.getPlayer().getId() == -1) {
             return true;
         }
 
         // 如果上一次出牌者和这一次出牌者相同，那么任何组合的牌都可以
-        if (oldPlayArea.getPid() == newPlayArea.getPid()) {
+        if (oldPlayArea.getPlayer().getId() == newPlayArea.getPlayer().getId()) {
             return true;
         }
 
