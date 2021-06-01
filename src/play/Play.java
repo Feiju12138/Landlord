@@ -196,7 +196,7 @@ public class Play {
 
                 // 判断新出牌区是否可以替换旧出牌区
                 if (!CheckCard.isNewPlayCards(playArea, newPlayArea)) {
-                    System.out.println("您出的牌比上家小，请重新选择更大的牌");
+                    System.out.println("您出的牌比上家点数小或不符合出牌规则，请重新选择要出的牌");
                     continue;
                 }
 
