@@ -26,8 +26,8 @@ public class CheckCard {
      *  10：单顺[至少5个连续的单不包括2和王]（abcde）{5✅,6✅,7✅,8✅,9✅,10✅,11✅,12✅}
      *  11：双顺[至少3个连续的对不包括2和王]（aabbcc）{6✅,8✅,10✅,12✅,14✅,16✅,18✅,20✅}
      *  12：三顺[至少2个连续的三张不包括2和王]（aaabbb）{6✅,9✅,12✅,15✅,18✅}
-     *  13：飞机-带翅膀-单（aaabbbcd）{8}✅
-     *  14：飞机-带翅膀-对（aaabbbccdd）{10}✅
+     *  13：飞机-带翅膀-单[至少2个连续的三带一不包括2和王]（aaabbbcd）{8✅,12✅,16✅,20✅}
+     *  14：飞机-带翅膀-对[至少2个连续的三带一对不包括2和王]（aaabbbccdd）{10✅,15✅,20✅}
      */
     public static Integer isPlayCards(PlayArea playArea) {
 
@@ -328,7 +328,8 @@ public class CheckCard {
                         && cardWeight4 == cardWeight5
                         && cardWeight5 == cardWeight6
                         && cardWeight7 == cardWeight8
-                        && cardWeight9 == cardWeight10) {
+                        && cardWeight9 == cardWeight10
+                        && cardWeight7 != cardWeight9) {
                     status = 14;
                 }
 
@@ -353,6 +354,16 @@ public class CheckCard {
                 break;
             case 12:
                 cardWeight1 = cards.get(0).getWeights();
+                cardWeight2 = cards.get(1).getWeights();
+                cardWeight3 = cards.get(2).getWeights();
+                cardWeight4 = cards.get(3).getWeights();
+                cardWeight5 = cards.get(4).getWeights();
+                cardWeight6 = cards.get(5).getWeights();
+                cardWeight7 = cards.get(6).getWeights();
+                cardWeight8 = cards.get(7).getWeights();
+                cardWeight9 = cards.get(8).getWeights();
+                cardWeight10 = cards.get(9).getWeights();
+                cardWeight11 = cards.get(10).getWeights();
                 int cardWeight12 = cards.get(11).getWeights();
 
                 // 判定单顺
@@ -396,6 +407,19 @@ public class CheckCard {
                     status = 12;
                 }
 
+                // 判定飞机-带翅膀-单
+                if (cardWeight1 == cardWeight2
+                        && cardWeight2 == cardWeight3
+                        && cardWeight4 == cardWeight5
+                        && cardWeight5 == cardWeight6
+                        && cardWeight7 == cardWeight8
+                        && cardWeight8 == cardWeight9
+                        && cardWeight10 != cardWeight11
+                        && cardWeight11 != cardWeight12
+                        && cardWeight12 != cardWeight10) {
+                    status = 13;
+                }
+
                 break;
             case 14:
                 cardWeight1 = cards.get(0).getWeights();
@@ -418,6 +442,19 @@ public class CheckCard {
                 break;
             case 15:
                 cardWeight1 = cards.get(0).getWeights();
+                cardWeight2 = cards.get(1).getWeights();
+                cardWeight3 = cards.get(2).getWeights();
+                cardWeight4 = cards.get(3).getWeights();
+                cardWeight5 = cards.get(4).getWeights();
+                cardWeight6 = cards.get(5).getWeights();
+                cardWeight7 = cards.get(6).getWeights();
+                cardWeight8 = cards.get(7).getWeights();
+                cardWeight9 = cards.get(8).getWeights();
+                cardWeight10 = cards.get(9).getWeights();
+                cardWeight11 = cards.get(10).getWeights();
+                cardWeight12 = cards.get(11).getWeights();
+                int cardWeight13 = cards.get(12).getWeights();
+                cardWeight14 = cards.get(13).getWeights();
                 int cardWeight15 = cards.get(14).getWeights();
 
                 // 判定三顺
@@ -434,9 +471,39 @@ public class CheckCard {
                     status = 12;
                 }
 
+                // 判定飞机-带翅膀-对
+                if (cardWeight1 == cardWeight2
+                        && cardWeight2 == cardWeight3
+                        && cardWeight4 == cardWeight5
+                        && cardWeight5 == cardWeight6
+                        && cardWeight7 == cardWeight8
+                        && cardWeight8 == cardWeight9
+                        && cardWeight10 == cardWeight11
+                        && cardWeight12 == cardWeight13
+                        && cardWeight14 == cardWeight15
+                        && cardWeight10 != cardWeight12
+                        && cardWeight12 != cardWeight14
+                        && cardWeight14 != cardWeight10) {
+                    status = 14;
+                }
+
                 break;
             case 16:
                 cardWeight1 = cards.get(0).getWeights();
+                cardWeight2 = cards.get(1).getWeights();
+                cardWeight3 = cards.get(2).getWeights();
+                cardWeight4 = cards.get(3).getWeights();
+                cardWeight5 = cards.get(4).getWeights();
+                cardWeight6 = cards.get(5).getWeights();
+                cardWeight7 = cards.get(6).getWeights();
+                cardWeight8 = cards.get(7).getWeights();
+                cardWeight9 = cards.get(8).getWeights();
+                cardWeight10 = cards.get(9).getWeights();
+                cardWeight11 = cards.get(10).getWeights();
+                cardWeight12 = cards.get(11).getWeights();
+                cardWeight13 = cards.get(12).getWeights();
+                cardWeight14 = cards.get(13).getWeights();
+                cardWeight15 = cards.get(14).getWeights();
                 int cardWeight16 = cards.get(15).getWeights();
 
                 // 判定双顺
@@ -451,6 +518,22 @@ public class CheckCard {
                 all /= 2;
                 if (sum == all) {
                     status = 11;
+                }
+
+                // 判定飞机-带翅膀-单
+                if (cardWeight1 == cardWeight2
+                        && cardWeight2 == cardWeight3
+                        && cardWeight4 == cardWeight5
+                        && cardWeight5 == cardWeight6
+                        && cardWeight7 == cardWeight8
+                        && cardWeight8 == cardWeight9
+                        && cardWeight10 == cardWeight11
+                        && cardWeight11 == cardWeight12
+                        && cardWeight13 != cardWeight14
+                        && cardWeight14 != cardWeight15
+                        && cardWeight15 != cardWeight16
+                        && cardWeight16 != cardWeight13) {
+                    status = 13;
                 }
 
                 break;
@@ -489,6 +572,24 @@ public class CheckCard {
                 break;
             case 20:
                 cardWeight1 = cards.get(0).getWeights();
+                cardWeight2 = cards.get(1).getWeights();
+                cardWeight3 = cards.get(2).getWeights();
+                cardWeight4 = cards.get(3).getWeights();
+                cardWeight5 = cards.get(4).getWeights();
+                cardWeight6 = cards.get(5).getWeights();
+                cardWeight7 = cards.get(6).getWeights();
+                cardWeight8 = cards.get(7).getWeights();
+                cardWeight9 = cards.get(8).getWeights();
+                cardWeight10 = cards.get(9).getWeights();
+                cardWeight11 = cards.get(10).getWeights();
+                cardWeight12 = cards.get(11).getWeights();
+                cardWeight13 = cards.get(12).getWeights();
+                cardWeight14 = cards.get(13).getWeights();
+                cardWeight15 = cards.get(14).getWeights();
+                cardWeight16 = cards.get(15).getWeights();
+                int cardWeight17 = cards.get(16).getWeights();
+                cardWeight18 = cards.get(17).getWeights();
+                int cardWeight19 = cards.get(18).getWeights();
                 int cardWeight20 = cards.get(19).getWeights();
 
                 // 判定双顺
@@ -503,6 +604,45 @@ public class CheckCard {
                 all /= 2;
                 if (sum == all) {
                     status = 11;
+                }
+
+                // 判定飞机-带翅膀-单
+                if (cardWeight1 == cardWeight2
+                        && cardWeight2 == cardWeight3
+                        && cardWeight4 == cardWeight5
+                        && cardWeight5 == cardWeight6
+                        && cardWeight7 == cardWeight8
+                        && cardWeight8 == cardWeight9
+                        && cardWeight10 == cardWeight11
+                        && cardWeight11 == cardWeight12
+                        && cardWeight13 == cardWeight14
+                        && cardWeight14 == cardWeight15
+                        && cardWeight16 != cardWeight17
+                        && cardWeight17 != cardWeight18
+                        && cardWeight18 != cardWeight19
+                        && cardWeight19 != cardWeight20
+                        && cardWeight20 != cardWeight16) {
+                    status = 13;
+                }
+
+                // 判定飞机-带翅膀-对
+                if (cardWeight1 == cardWeight2
+                        && cardWeight2 == cardWeight3
+                        && cardWeight4 == cardWeight5
+                        && cardWeight5 == cardWeight6
+                        && cardWeight7 == cardWeight8
+                        && cardWeight8 == cardWeight9
+                        && cardWeight10 == cardWeight11
+                        && cardWeight11 == cardWeight12
+                        && cardWeight13 == cardWeight14
+                        && cardWeight15 == cardWeight16
+                        && cardWeight17 == cardWeight18
+                        && cardWeight19 == cardWeight20
+                        && cardWeight13 != cardWeight15
+                        && cardWeight15 != cardWeight17
+                        && cardWeight17 != cardWeight19
+                        && cardWeight19 != cardWeight13) {
+                    status = 14;
                 }
 
                 break;
@@ -564,23 +704,13 @@ public class CheckCard {
             }
         }
 
-        // 其他情况需要对比前后两次出牌类别相同
-        if (newPlayArea.getStatus() != oldPlayArea.getStatus()) {
+        // 其他情况需要对比前后两次出牌类别和牌数相同
+        if (newPlayArea.getStatus() != oldPlayArea.getStatus() || newPlayArea.getCards().size() != oldPlayArea.getCards().size()) {
             return false;
         }
-
-        if (oldPlayArea.getStatus() == 10 || oldPlayArea.getStatus() == 11 || oldPlayArea.getStatus() == 12) {
-            // 顺牌比较策略
-            if (newPlayArea.getCards().size() == oldPlayArea.getCards().size()) {
-                if (newPlayArea.getCards().get(0).getWeights() > oldPlayArea.getCards().get(0).getWeights()) {
-                    return true;
-                }
-            }
-        } else {
-            // 非顺牌比较策略
-            if (newPlayArea.getCards().get(0).getWeights() > oldPlayArea.getCards().get(0).getWeights()) {
-                return true;
-            }
+        // 在类别和牌数相同的基础上对比首张牌大小
+        if (newPlayArea.getCards().get(0).getWeights() > oldPlayArea.getCards().get(0).getWeights()) {
+            return true;
         }
 
         return false;

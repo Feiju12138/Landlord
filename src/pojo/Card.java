@@ -76,4 +76,13 @@ public class Card {
         }
         return str;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        Card c = (Card)o;
+        if (c.getColor()==this.color && c.getNumber().equals(this.number)) {
+            return true;
+        }
+        return false;
+    }
 }
