@@ -27,20 +27,16 @@ public class PlayArea {
      *  12：三顺-飞机-不带翅膀（aaabbb）
      *  13：飞机-带翅膀-单（aaabbbcd）
      *  14：飞机-带翅膀-对（aaabbbccdd）
-     * pid：上一次出牌玩家的编号
-     *  -1：没有上一次出牌的玩家
      * player：上一次出牌的玩家信息
      *
      */
     private List<Card> cards;
     private Integer status;
-//    private Integer pid;
     private Player player;
 
     public PlayArea() {
         cards = new ArrayList<>();
         status = -1;
-//        pid = -1;
         player = null;
     }
 

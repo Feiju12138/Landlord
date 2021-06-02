@@ -109,9 +109,9 @@ public class Robot {
         List<Card> goList = new ArrayList<>();
 
         // 遇到队友出牌，不出牌
-        if (oldPlayArea.getPlayer().getStatus() == player.getStatus()) {
-            return "";
-        }
+//        if (oldPlayArea.getPlayer().getStatus() == player.getStatus()) {
+//            return "";
+//        }
 
         // 如果敌方为火箭，那么无对策
         if (oldPlayArea.getCards().size() == 2) {
@@ -131,7 +131,7 @@ public class Robot {
             } else if (!cardFor4.isEmpty()) {
                 goList.add(cardFor4.get(0));
             }
-            return autoGo(goList, oldPlayArea);
+            return autoGo(goList, player);
         }
 
         // 遇到单牌的对策
@@ -141,7 +141,7 @@ public class Robot {
                     Card card = cardFor1.get(i);
                     if (card.getWeights() > oldPlayArea.getCards().get(0).getWeights()) {
                         goList.add(card);
-                        return autoGo(goList, oldPlayArea);
+                        return autoGo(goList, player);
                     }
                 }
             }
@@ -155,7 +155,7 @@ public class Robot {
                     if (card.getWeights() > oldPlayArea.getCards().get(0).getWeights()) {
                         goList.add(card);
                         goList.add(cardFor2.get(i + 1));
-                        return autoGo(goList, oldPlayArea);
+                        return autoGo(goList, player);
                     }
                 }
             }
@@ -170,7 +170,7 @@ public class Robot {
                         goList.add(card);
                         goList.add(cardFor3.get(i + 1));
                         goList.add(cardFor3.get(i + 2));
-                        return autoGo(goList, oldPlayArea);
+                        return autoGo(goList, player);
                     }
                 }
             }
@@ -190,7 +190,7 @@ public class Robot {
                 }
                 if (!cardFor1.isEmpty()) {
                     goList.add(cardFor1.get(0));
-                    return autoGo(goList, oldPlayArea);
+                    return autoGo(goList, player);
                 } else {
                     goList.clear();
                 }
@@ -212,7 +212,7 @@ public class Robot {
                 if (!cardFor2.isEmpty()) {
                     goList.add(cardFor2.get(0));
                     goList.add(cardFor2.get(1));
-                    return autoGo(goList, oldPlayArea);
+                    return autoGo(goList, player);
                 } else {
                     goList.clear();
                 }
@@ -235,7 +235,7 @@ public class Robot {
                 if (cardFor1.size() >= 2) {
                     goList.add(cardFor1.get(0));
                     goList.add(cardFor1.get(1));
-                    return autoGo(goList, oldPlayArea);
+                    return autoGo(goList, player);
                 } else {
                     goList.clear();
                 }
@@ -260,7 +260,7 @@ public class Robot {
                     goList.add(cardFor2.get(1));
                     goList.add(cardFor2.get(2));
                     goList.add(cardFor2.get(3));
-                    return autoGo(goList, oldPlayArea);
+                    return autoGo(goList, player);
                 } else {
                     goList.clear();
                 }
@@ -313,7 +313,7 @@ public class Robot {
                         }
                         // 如果全部找完牌数和出牌区的牌数相同，说明找对了，如果没找对，清空goList继续大循环
                         if (goList.size() == oldPlayArea.getCards().size()) {
-                            return autoGo(goList, oldPlayArea);
+                            return autoGo(goList, player);
                         } else {
                             goList.clear();
                         }
@@ -346,7 +346,7 @@ public class Robot {
                         }
                         // 如果全部找完牌数和出牌区的牌数相同，说明找对了，如果没找对，清空goList继续大循环
                         if (goList.size() == oldPlayArea.getCards().size()) {
-                            return autoGo(goList, oldPlayArea);
+                            return autoGo(goList, player);
                         } else {
                             goList.clear();
                         }
@@ -380,7 +380,7 @@ public class Robot {
                         }
                         // 如果全部找完牌数和出牌区的牌数相同，说明找对了，如果没找对，清空goList继续大循环
                         if (goList.size() == oldPlayArea.getCards().size()) {
-                            return autoGo(goList, oldPlayArea);
+                            return autoGo(goList, player);
                         } else {
                             goList.clear();
                         }
@@ -419,7 +419,7 @@ public class Robot {
                         }
                         // 如果全部找完牌数和出牌区的牌数相同，说明找对了，如果没找对，清空goList继续大循环
                         if (goList.size() == oldPlayArea.getCards().size()) {
-                            return autoGo(goList, oldPlayArea);
+                            return autoGo(goList, player);
                         } else {
                             goList.clear();
                         }
@@ -459,7 +459,7 @@ public class Robot {
                         }
                         // 如果全部找完牌数和出牌区的牌数相同，说明找对了，如果没找对，清空goList继续大循环
                         if (goList.size() == oldPlayArea.getCards().size()) {
-                            return autoGo(goList, oldPlayArea);
+                            return autoGo(goList, player);
                         } else {
                             goList.clear();
                         }
@@ -476,7 +476,7 @@ public class Robot {
                 goList.add(cardFor4.get(1));
                 goList.add(cardFor4.get(2));
                 goList.add(cardFor4.get(3));
-                return autoGo(goList, oldPlayArea);
+                return autoGo(goList, player);
             }
         }
 
@@ -489,7 +489,7 @@ public class Robot {
                         goList.add(cardFor4.get(i+1));
                         goList.add(cardFor4.get(i+2));
                         goList.add(cardFor4.get(i+3));
-                        return autoGo(goList, oldPlayArea);
+                        return autoGo(goList, player);
                     }
                 }
             }
@@ -499,14 +499,14 @@ public class Robot {
         if (player.getCards().get(player.getCards().size()-1).getWeights()+player.getCards().get(player.getCards().size()-2).getWeights()==14+15) {
             goList.add(player.getCards().get(player.getCards().size()-1));
             goList.add(player.getCards().get(player.getCards().size()-2));
-            return autoGo(goList, oldPlayArea);
+            return autoGo(goList, player);
         }
 
         // 没有牌可以出
         return "";
     }
 
-    public String autoGo(List<Card> goList, PlayArea oldPlayArea) {
+    public String autoGo(List<Card> goList, Player player) {
 
         // 创建一个出牌字符串
         String goStr = "";
@@ -515,8 +515,8 @@ public class Robot {
 
             Card goCard = goList.get(i);
 
-            for (int j = 0; j < oldPlayArea.getCards().size(); j++) {
-                if (oldPlayArea.getCards().get(j).equals(goCard)) {
+            for (int j = 0; j < player.getCards().size(); j++) {
+                if (player.getCards().get(j).equals(goCard)) {
                     goStr += j;
                     break;
                 }
